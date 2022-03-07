@@ -21,7 +21,7 @@ class RecordingJob(th.Thread):
     def run(self):
         self.num = 0
         self.fourcc = cv2.VideoWriter_fourcc(*'XVID')
-        self.out = cv2.VideoWriter(self.video_name, self.fourcc, 60, (640, 480), False)
+        self.out = cv2.VideoWriter(self.video_name, self.fourcc, 10, (640, 480), False)
         while self.stop_flag.is_set():
 
             if not self.queue.empty():
@@ -52,7 +52,7 @@ if __name__ == '__main__':
     # Configure IR stream
     pipeline = rs.pipeline()
     config = rs.config()
-    config.enable_stream(rs.stream.infrared, 640, 480, rs.format.y8, 60)
+    config.enable_stream(rs.stream.infrared, 640, 480, rs.format.y8, 30)
 
     """    
     pipeline = rs.pipeline()
